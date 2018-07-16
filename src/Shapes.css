@@ -1,0 +1,26 @@
+
+.square-css {
+    height : 150px;
+    width : 150px;
+    float : left;
+    background-color: blue;
+    margin : 0px 10px;
+  }
+  
+
+.circle-css{
+    height : 150px;
+    width : 150px;
+    float : left;
+    border-radius: 50%; 
+    margin : 0px 10px;
+}
+
+.rectangle-css{
+    height : 150px;
+    width : 250px;
+    float : left;
+    margin : 0px 10px;
+}
+
+
