@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Shapes from './Shapes.js';
-import App from './App';
 
 export default class SecondComp extends Component{
 
@@ -8,19 +7,19 @@ export default class SecondComp extends Component{
     constructor(props){
         super(props)
         this.state = {
-            list :props.list,
+            list :this.props.list,
         }
-        console.log(this.props);
     }
 
 
-    componentWillReceiveProps(newProps) {
-        this.setState({ list: newProps })
+    componentWillReceiveProps(nextProps) {
+        this.setState({ list: nextProps.list })
     }
 
 
    
     render(){
+        console.log(this.state.list);
         return(
                <div className="App-body">
                    {this.state.list.map((list1, i) => (

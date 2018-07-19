@@ -9,20 +9,18 @@ export default class App extends Component {
     this.state={
       list:[],
     }
-    
+    this.add = this.add.bind(this)
   }
 
-  add(arg1){
-    
-    this.setState({list : arg1})
-    
+  add(listVal){
+    this.setState({list : listVal})
   }
 
   render() {
     return (
       <div>
-      <FirstComp add={(arg1)=>{this.add(arg1)}}/>
-      <SecondComp list={this.state.list}/>
+      <FirstComp add={this.add}/>
+      <SecondComp list={this.state.list} />
       </div>
     )
 }

@@ -1,79 +1,54 @@
 import React,{Component} from 'react'; 
+import SelectBox from './SelectBox';
 
 export default class FirstComp extends Component{
 
     constructor(){
         super();
 
-        this.state = { shape: '',color:'',selectedShape:'', selectedColor:''};
+        this.state = { shape: '',color:''};
         this.list = [];
-        this.onShapeChange=this.onShapeChange.bind(this);
         this.addItem=this.addItem.bind(this);
         this.replaceItem=this.replaceItem.bind(this);
-
+        this.selctedShapeVal = this.selctedShapeVal.bind(this);
+        this.selctedcoloreVal = this.selctedcoloreVal.bind(this);
     }   
-
-
-  onShapeChange(e) {
-    this.setState({
-      selectedShape: e.target.value,
-    })
-  }
-
-  onColorChange(e) {
-    this.setState({
-      selectedColor: e.target.value,
-    })
-  }
   
   addItem(){
-    this.setState({
-     shape : this.state.selectedShape,
-     color : this.state.selectedColor,
-    })
-  
     this.list.push(this.state)
     this.props.add(this.list);
   }
 
   replaceItem(){
-   
-    this.setState({
-      shape : this.state.selectedShape,
-      color : this.state.selectedColor,
-     })
-     this.list.push(this.state)
      this.list.pop()
+     this.list.push(this.state)
      this.props.add(this.list);
+  }
+
+  selctedShapeVal(selected){
+    this.setState({shape : selected})
+  }
+
+  selctedcoloreVal(selected){
+    this.setState({color : selected})
   }
     
     render(){
+      var dataShapes = ['Select Shape','square', 'circle', 'rectangle']
+      var colorData = ['Select Color','red','blue','green'];
         return(
         <div className="form-group">
-      
-        <label htmlFor="select1" >Select Shape:</label>
-        <select defaultValue={this.state.shape} onChange={this.onShapeChange} className="form-control">
-          <option value="">Select Shape</option>
-          <option value="square">Square</option>
-          <option value="circle">Circle</option>
-          <option value="rectangle">Rectangle</option>
-        </select>
 
-        <label htmlFor="color1" >Select Color:</label>
-        <select defaultValue={this.state.color} onChange={this.onColorChange.bind(this)} className="form-control">
-          <option value="">Select Color</option>
-          <option value="red">Red</option>
-          <option value="blue">Blue</option>
-          <option value="green">Green</option>
-        </select>
-       
+        <SelectBox  values={this.state.shape} data={dataShapes} ret={(selected)=>{this.selctedShapeVal(selected)}}/>
+        <SelectBox  values={this.state.color} data={colorData} ret={(selected)=>{this.selctedcoloreVal(selected)}}/>
+
         <button onClick={this.addItem}  >
            Add
         </button>
         <button onClick={this.replaceItem}>
            Replace
         </button>
-        
+
       </div>
   
          ) }

@@ -1,23 +1,23 @@
-import React,{Component} from 'react';
+import React,{Component} from 'react'; 
+import './Shapes.css';
 
 export default class Shapes extends Component{
 
     constructor(props) {
         super(props);
         this.state=
-          {  };
-        
+          {
+            shape :props.shape,
+            color :props.color,
+
+            };
         
       }
 
-      static getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps);
-        return {
-          shape: nextProps.shape,
-          color: nextProps.color,
-        };
-        
-      }
+      componentWillReceiveProps(nextProps) {
+        this.setState({ shape: nextProps.shape , color: nextProps.color})
+    }
+
      
        render(){
           
