@@ -6,7 +6,7 @@ export default class FirstComp extends Component{
     constructor(){
         super();
 
-        this.state = { shape: '',color:''};
+        this.state = { shape: '',color:'',constVal:'',count:0};
         this.list = [];
         this.addItem=this.addItem.bind(this);
         this.replaceItem=this.replaceItem.bind(this);
@@ -15,12 +15,14 @@ export default class FirstComp extends Component{
     }   
   
   addItem(){
+    this.setState({constVal: this.state.shape.concat("", this.state.color) })
     this.list.push(this.state)
     this.props.add(this.list);
   }
 
   replaceItem(){
      this.list.pop()
+     this.setState({constVal: this.state.shape.concat("", this.state.color) })
      this.list.push(this.state)
      this.props.add(this.list);
   }

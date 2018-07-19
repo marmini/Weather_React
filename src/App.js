@@ -9,7 +9,7 @@ export default class App extends Component {
     this.state={
       list:[],
     }
-    this.add = this.add.bind(this)
+    this.add = this.add.bind(this);
   }
 
   add(listVal){
