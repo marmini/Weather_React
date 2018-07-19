@@ -26,10 +26,12 @@
 
 .App-body{
   margin: auto;
-  width: 48%;
+  width: 47%;
   border: 3px solid rgb(206, 108, 17);
   padding: 10px;
-  height: 18%;
+  height: 60%;
+  float: left;
+  margin-top: 5px;
 }
 
 @keyframes App-logo-spin {

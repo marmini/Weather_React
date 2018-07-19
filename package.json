@@ -15,5 +15,17 @@
   },
   "devDependencies": {
     "css-loader": "^1.0.0"
-  }
+  },
+  "description": "<<<<<<< HEAD This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marmini/React-Exp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marmini/React-Exp/issues"
+  },
+  "homepage": "https://github.com/marmini/React-Exp#readme"
 }

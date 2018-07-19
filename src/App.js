@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
-import Shapes from './Shapes';
-import './Shapes.css';
-import './App.css';
+import FirstComp from './FirstComp';
+import SecondComp from './SecondComp';
 
-class App extends Component {
+export default class App extends Component {
+
+  constructor(){
+    super(); 
+    this.state={
+      list:[],
+    }
+    
+  }
+
+  add(arg1){
+    
+    this.setState({list : arg1})
+    
+  }
+
   render() {
     return (
-      <div className="App">
-      <div  >Shapes & Colors</div>
-      <div className="App-body">
-        <Shapes className='square-css' color='red' shape='square'/>
-        <Shapes className='circle-css' color='blue' shape='circle'/>
-        <Shapes className='rectangle-css' color='pink' shape='rectangle'/>
-        </div>
+      <div>
+      <FirstComp add={(arg1)=>{this.add(arg1)}}/>
+      <SecondComp list={this.state.list}/>
       </div>
-    );
-  }
+    )
 }
-
-export default App;
+}
