@@ -5,6 +5,9 @@
     float : left;
     background-color: blue;
     margin : 0px 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
   }
   
 
@@ -14,6 +17,10 @@
     float : left;
     border-radius: 50%; 
     margin : 0px 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+
 }
 
 .rectangle-css{
@@ -21,6 +28,12 @@
     width : 250px;
     float : left;
     margin : 0px 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+}
+.float{
+    float: left
 }
 
 

@@ -3,53 +3,31 @@ import SelectBox from './SelectBox';
 
 export default class FirstComp extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        this.state={
+          selectedColor : '',
+          selectedShape : '',
+          selectedCount : 0,
+        }
 
-        this.state = { shape: '',color:'',constVal:'',count:0};
-        this.list = [];
-        this.addItem=this.addItem.bind(this);
-        this.replaceItem=this.replaceItem.bind(this);
-        this.selctedShapeVal = this.selctedShapeVal.bind(this);
-        this.selctedcoloreVal = this.selctedcoloreVal.bind(this);
+        this.shapes =this.props.shapes,
+        this.colors =this.props.colors,
+
+        this.addItem = this.addItem.bind(this);
     }   
-  
-  addItem(){
-    this.setState({constVal: this.state.shape.concat("", this.state.color) })
-    this.list.push(this.state)
-    this.props.add(this.list);
-  }
-
-  replaceItem(){
-     this.list.pop()
-     this.setState({constVal: this.state.shape.concat("", this.state.color) })
-     this.list.push(this.state)
-     this.props.add(this.list);
-  }
-
-  selctedShapeVal(selected){
-    this.setState({shape : selected})
-  }
-
-  selctedcoloreVal(selected){
-    this.setState({color : selected})
-  }
     
+    addItem(){
+      this.props.getShapCol(this.state);
+    }
+
     render(){
-      var dataShapes = ['Select Shape','square', 'circle', 'rectangle']
-      var colorData = ['Select Color','red','blue','green'];
+     
         return(
-        <div className="form-group">
-
-        <SelectBox  values={this.state.shape} data={dataShapes} ret={(selected)=>{this.selctedShapeVal(selected)}}/>
-        <SelectBox  values={this.state.color} data={colorData} ret={(selected)=>{this.selctedcoloreVal(selected)}}/>
-
-        <button onClick={this.addItem}  >
-           Add
-        </button>
-        <button onClick={this.replaceItem}>
-           Replace
-        </button>
+        <div>
+        <SelectBox optionList={this.shapes} selectedValue={(selected)=>this.setState({selectedShape: selected})}/>
+        <SelectBox optionList={this.colors} selectedValue={(selected)=>this.setState({selectedColor: selected})}/>
+        <button onClick={this.addItem}>Add</button>
 
       </div>
   

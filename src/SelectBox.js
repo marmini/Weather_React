@@ -5,32 +5,27 @@ export default class SelectBox extends Component{
   constructor(props){
    super(props)
     this.state = {
-        values : this.props.values,
-        data : this.props.data,
-    }
-    this.onChangeDrop=this.onChangeDrop.bind(this);
+        optionList :this.props.optionList,
+  }
+  this.onChangeDrop = this.onChangeDrop.bind(this);
   }
 
   onChangeDrop(e) {
-      const value = e.target.value;
-      this.props.ret(value);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ values: nextProps.values ,data :nextProps.data })
+    const value = e.target.value;
+    this.props.selectedValue(value);
 }
 
-
-makeItem = function(X) {
+   makeItem = function(X) {
     return <option>{X}</option>;
-};
+   };
 
   render(){
       return(
-        <select defaultValue={this.state.values} onChange={this.onChangeDrop} className="form-control">
-         {this.state.data.map(this.makeItem)}
-      </select>
-
+         <div>
+         <select selctedValue={this.state.values} onChange={this.onChangeDrop}>
+         {this.state.optionList.map(this.makeItem)}
+         </select>
+         </div>
       );
   }
 }

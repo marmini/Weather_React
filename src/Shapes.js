@@ -5,52 +5,49 @@ export default class Shapes extends Component{
 
     constructor(props) {
         super(props);
-        this.state=
-          {
-            shape :props.shape,
-            color :props.color,
-            count :props.count,
-            };
-
-            this.countIncrementer=this.countIncrementer.bind(this);
+        this.state={
+           shape : this.props.shape,
+           color : this.props.color,
+           count : this.props.count,
+        }
+      this.countIncrementer = this.countIncrementer.bind(this)
       }
 
-      componentWillReceiveProps(nextProps) {
-        this.setState({ shape: nextProps.shape , color: nextProps.color})
+    countIncrementer(){
+     this.props.clickedShapeCol(this.state)
     }
 
-
-    countIncrementer(){
-      this.setState({ count: this.state.count+1})
-      this.props.countIncr(this.state.count)
-      
+    componentWillReceiveProps(nextProps) {
+      this.state.shape = nextProps.shape
+      this.state.color = nextProps.color
+      this.state.count = nextProps.count
   }
 
+
        render(){
-          console.log(this.state);
             return (
-                
-                 <div>
                     <div>
                     {(() => {
-                      switch (this.props.shape) {
+                      switch (this.state.shape) {
                         case "square":  return (
                             <div>
                             <div className='square-css' style={{ backgroundColor: this.state.color}}
-                               onDoubleClick={this.countIncrementer}></div>          
-                            <div>{this.state.count}</div>                   
+                               onClick={this.countIncrementer}>{this.state.count}</div>    
+                                             
                             </div>
                           );
                           case "circle": return (
-                            <div>
+                            <div >
                             <div className='circle-css' style={{ backgroundColor: this.state.color}}
-                             onDoubleClick={this.countIncrementer}></div>
+                             onClick={this.countIncrementer}>{this.state.count}</div>
+                             
                             </div>
                           );
                           case "rectangle":return (
                             <div>
                             <div className='rectangle-css' style={{ backgroundColor: this.state.color}}
-                             onDoubleClick={this.countIncrementer}></div>
+                             onClick={this.countIncrementer}>{this.state.count}</div>
+                              
                             </div>
                           );                        
                       }
@@ -58,8 +55,6 @@ export default class Shapes extends Component{
                   </div>
                     
                      
-                 </div>
-                
               );    
     }
 }
