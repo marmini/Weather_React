@@ -9,14 +9,32 @@ export default class Weather extends Component {
   constructor(props){
     super(props);
     this.state = {
-      latitude:0,
-      longitude:0,
+      latitude:this.props.lat,
+      longitude:this.props.long,
       temperature:0,
       humidity:0,
       country:'',
       city:'',
       icon:''
     }
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.lat=nextProps.latLong.lat
+    this.lon=nextProps.latLong.long
+
+    url = 'http://api.openweathermap.org/data/2.5/weather?'+'lat='+this.lat+'&lon='+this.lon+'&appid='+weatherApiKey;
+    console.log(url)
+    fetch(url)
+    .then(data => data.json())
+    .then(parsedData => this.setState({ 
+      country : parsedData.sys.country,
+      city :parsedData.name,
+      temperature : Number((parsedData.main.temp-273.15).toFixed(1)),
+      humidity : parsedData.main.humidity,
+      feelslike : parsedData.weather[0].description,
+      icon : parsedData.weather[0].icon
+    }));
   }
   
   setWeather=(position)=>{
@@ -29,7 +47,7 @@ export default class Weather extends Component {
     });
 
     url = 'http://api.openweathermap.org/data/2.5/weather?'+'lat='+this.lat+'&lon='+this.lon+'&appid='+weatherApiKey;
-   console.log(url)
+    console.log(url)
     fetch(url)
     .then(data => data.json())
     .then(parsedData => this.setState({ 
@@ -53,6 +71,7 @@ export default class Weather extends Component {
 
   //render method
   render() {
+    console.log("State:",this.state)
     return (
       <div id="appContainer">
           <Grid>

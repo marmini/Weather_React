@@ -44,3 +44,12 @@
 #imgRow, #tempRow{
     margin-right : 10px;
 }
+
+.selectContainer{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 446px;
+    padding-right: 612px;
+    padding-top: 45px;
+
+}
